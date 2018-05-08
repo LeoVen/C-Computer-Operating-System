@@ -148,10 +148,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="C-Process-Unit.c" />
+    <ClCompile Include="src\Computer.c" />
     <ClCompile Include="src\ProcessQueue.c" />
+    <ClCompile Include="src\StringHandler.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Computer.h" />
     <ClInclude Include="include\ProcessQueue.h" />
+    <ClInclude Include="include\StringHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

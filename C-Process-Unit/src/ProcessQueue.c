@@ -8,7 +8,7 @@
  *
  */
 
-#include "..\include\ProcessQueue.h"
+#include "..\include\Computer.h"
 
 int pcq_init(ProcessQueue **pcq, size_t max_length)
 {
@@ -22,3 +22,15 @@ int pcq_init(ProcessQueue **pcq, size_t max_length)
 
 	return 0;
 }
+
+int pcb_init(ProcessControlBlock **pcb, size_t p_id, char * p_name, size_t clocks)
+{
+	*pcb = malloc(sizeof(ProcessControlBlock));
+
+	(*pcb)->p_id = p_id;
+	(*pcb)->p_name = strdup(p_name);
+	(*pcb)->clocks = clocks;
+
+	return 0;
+}
+

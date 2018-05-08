@@ -14,15 +14,12 @@
 extern "C" {
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
-
 	typedef enum ProcessStatus {
-		RUNNING, READY, TERMINATED
+		STARTING, RUNNING, READY, TERMINATED
 	} ProcessStatus;
 
 	typedef struct ProcessControlBlock {
-		char p_name[31];
+		char * p_name;
 		size_t p_id;
 		size_t clocks;
 		enum ProcessStatus status;
@@ -37,6 +34,7 @@ extern "C" {
 	} ProcessQueue;
 
 	int pcq_init(ProcessQueue **pcq, size_t max_length);
+	int pcb_init(ProcessControlBlock **pcb, size_t p_id, char * p_name, size_t clocks);
 
 #ifdef __cplusplus
 }

@@ -21,9 +21,21 @@
     <ClCompile Include="src\ProcessQueue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\StringHandler.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Computer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ProcessQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StringHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Computer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
  * @author Leonardo Vencovsky (https://github.com/LeoVen)
  * @date 08/05/2018
  *
- * @brief Source File for String Handling functions
+ * @brief Source File for Input Handling functions
  *
  */
 
