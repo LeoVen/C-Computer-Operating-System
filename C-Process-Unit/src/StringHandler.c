@@ -55,10 +55,14 @@ int process_unit_start()
 	Computer *comp;
 
 	size_t clocks, len;
+
 	printf("\nComputer Clock Speed: ");
 	scanf_s("%zu", &clocks);
+	fflush(stdin);
+
 	printf("\nProcess Queue Length: ");
 	scanf_s("%zu", &len);
+	fflush(stdin);
 
 	computer_init(&comp, clocks, len);
 
@@ -72,6 +76,7 @@ int process_unit_start()
 		
 		printf(" > ");
 		scanf_s("%d", &cmd);
+		fflush(stdin);
 
 		switch (cmd)
 		{
@@ -118,7 +123,28 @@ int print_menu_options()
 
 int proc_create(Computer *comp)
 {
+	char buffer[31];
+	size_t clocks;
+	char *t;
+	ProcessControlBlock *pcb;
 
+	printf("\nCreate a process");
+	
+	printf("\nProcess Name:\n > ");
+	scanf_s("%c\n", &t);
+	
+	fgets(buffer, 31, stdin);
+
+	buffer[strlen(buffer) - 1] = '\0';
+
+	printf("\nClocks to be processed:\n > ");
+	fflush(stdin);
+	scanf_s("%zu", &clocks);
+
+	comp->pid++;
+	pcb_init(&pcb, comp->pid, buffer, clocks);
+
+	pcb_enqueue(comp->proc_queue, pcb);
 
 	return 0;
 }
@@ -139,7 +165,6 @@ int proc_alter(Computer *comp)
 
 int proc_list(Computer *comp)
 {
-
-
+	pcb_display(comp->proc_queue);
 	return 0;
 }

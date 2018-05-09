@@ -22,6 +22,7 @@ extern "C" {
 
 	typedef struct ProcessControlBlock {
 		char * p_name;
+		char * time;
 		size_t p_id;
 		size_t clocks;
 		enum ProcessStatus status;
@@ -38,8 +39,11 @@ extern "C" {
 	int pcq_init(ProcessQueue **pcq, size_t max_length);
 	int pcb_init(ProcessControlBlock **pcb, size_t p_id, char * p_name, size_t clocks);
 
-	int pcb_enqueue(ProcessQueue *pcq, ProcessControlBlock *pcb);
-	int pcb_dequeue(ProcessQueue *pcq, ProcessControlBlock *pcb);
+	int pcb_enqueue(ProcessQueue *pcq, ProcessControlBlock *block);
+	int pcb_dequeue(ProcessQueue *pcq, ProcessControlBlock **block);
+	int pcb_display(ProcessQueue *pcq);
+
+	char * proc_status_str(ProcessStatus st);
 
 #ifdef __cplusplus
 }
