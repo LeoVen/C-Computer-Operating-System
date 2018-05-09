@@ -40,6 +40,8 @@ int print_credits()
 	printf("\n |                                                                   |");
 	printf("\n +-------------------------------------------------------------------+");
 	printf("\n");
+
+	return 0;
 }
 
 int process_unit_quickstart()
@@ -60,7 +62,42 @@ int process_unit_start()
 
 	computer_init(&comp, clocks, len);
 
-	printf("\nProcess Queue Maximum Length: %zu", comp->proc_queue->max_length);
+	bool ok = true;
+
+	while (ok)
+	{
+		int cmd;
+
+		print_menu_options();
+		
+		printf(" > ");
+		scanf_s("%d", &cmd);
+
+		switch (cmd)
+		{
+		case 0:
+			ok = false;
+			break;
+		case 1:
+			proc_create(comp);
+			break;
+		case 2:
+			proc_remove(comp);
+			break;
+		case 3:
+			proc_alter(comp);
+			break;
+		case 4:
+			proc_list(comp);
+			break;
+		default:
+			printf("\nInvalid Command");
+			break;
+		}
+		printf("\nPress enter to continue...");
+		getch();
+		system(CLEAR_SCREEN);
+	}
 
 	free(comp);
 	return 0;
@@ -69,4 +106,40 @@ int process_unit_start()
 int print_menu_options()
 {
 	printf("\n  Command List                                                     ");
+	printf("\n                                                                   ");
+	printf("\n  0 - Exit                                                         ");
+	printf("\n  1 - Create Process                                               ");
+	printf("\n  2 - Remove Process                                               ");
+	printf("\n  3 - Alterate Process                                             ");
+	printf("\n  4 - List Process Table                                           ");
+	printf("\n");
+	printf("\n");
+}
+
+int proc_create(Computer *comp)
+{
+
+
+	return 0;
+}
+
+int proc_remove(Computer *comp)
+{
+
+
+	return 0;
+}
+
+int proc_alter(Computer *comp)
+{
+
+
+	return 0;
+}
+
+int proc_list(Computer *comp)
+{
+
+
+	return 0;
 }

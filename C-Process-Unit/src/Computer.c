@@ -9,7 +9,6 @@
  */
 
 #include "..\include\Computer.h"
-#include "..\include\ProcessQueue.h"
 
 int computer_init(Computer **cmp, size_t clock_s, size_t proc_queue_len)
 {

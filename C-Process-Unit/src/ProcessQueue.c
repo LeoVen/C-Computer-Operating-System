@@ -34,3 +34,16 @@ int pcb_init(ProcessControlBlock **pcb, size_t p_id, char * p_name, size_t clock
 	return 0;
 }
 
+int pcb_enqueue(ProcessQueue *pcq, ProcessControlBlock *pcb)
+{
+
+	return 0;
+}
+
+int pcb_dequeue(ProcessQueue *pcq, ProcessControlBlock *pcb)
+{
+
+	return 0;
+}
+
+

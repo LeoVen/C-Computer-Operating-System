@@ -26,14 +26,15 @@ extern "C" {
 #include "StringHandler.h"
 
 	typedef struct Computer {
-		size_t pid;                         /*!< Process ID given to each process */
-		size_t clock_speed;                 /*!< How many processes can be processed at each iteration */
-		ProcessControlBlock *curr_proc;     /*!< Current process being processed */
-		ProcessControlBlock *curr_term;     /*!< Current process being terminated */
-		ProcessQueue *proc_queue;           /*!< Process Queue */
+		size_t pid;                                /*!< Process ID given to each process */
+		size_t clock_speed;                        /*!< How many processes can be processed at each iteration */
+		struct ProcessControlBlock *curr_proc;     /*!< Current process being processed */
+		struct ProcessControlBlock *curr_term;     /*!< Current process being terminated */
+		struct ProcessQueue *proc_queue;           /*!< Process Queue */
 	} Computer;
 
 	int computer_init(Computer **cmp, size_t clock_s, size_t proc_queue_len);
+	int computer_process(Computer *comp, ProcessQueue *pcq);
 
 #ifdef __cplusplus
 }
