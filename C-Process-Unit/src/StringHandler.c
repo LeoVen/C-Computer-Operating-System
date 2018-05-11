@@ -151,6 +151,8 @@ int proc_create(Computer *comp)
 
 int proc_remove(Computer *comp)
 {
+	if (queue_is_empty(comp->proc_queue))
+		return 1;
 
 
 	return 0;
@@ -158,13 +160,35 @@ int proc_remove(Computer *comp)
 
 int proc_alter(Computer *comp)
 {
+	if (queue_is_empty(comp->proc_queue))
+		return 1;
 
+	size_t pid;
+
+	char *t;
+
+	printf("\nSearch PID: ");
+	scanf_s("%c\n", &t);
+	scanf_s("%zu", &pid);
+
+	ProcessControlBlock *scan = comp->proc_queue->front;
+
+	while (scan != NULL && scan->p_id != pid)
+	{
+
+	}
+
+	if (scan == NULL) {
+		printf("\nProcess Not Found");
+		return 1;
+	}
+	
+	pcb_display_single(scan);
 
 	return 0;
 }
 
 int proc_list(Computer *comp)
 {
-	pcb_display(comp->proc_queue);
-	return 0;
+	return pcb_display(comp->proc_queue);
 }

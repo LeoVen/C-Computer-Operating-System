@@ -41,9 +41,13 @@ extern "C" {
 
 	int pcb_enqueue(ProcessQueue *pcq, ProcessControlBlock *block);
 	int pcb_dequeue(ProcessQueue *pcq, ProcessControlBlock **block);
+
+	int pcb_display_single(ProcessControlBlock *pcb);
 	int pcb_display(ProcessQueue *pcq);
 
 	char * proc_status_str(ProcessStatus st);
+
+	bool queue_is_empty(ProcessQueue *pcq);
 
 #ifdef __cplusplus
 }

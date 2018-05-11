@@ -14,7 +14,6 @@
 extern "C" {
 #endif
 
-
 #define CLEAR_SCREEN "cls"
 //#define CLEAR_SCREEN "clear"
 

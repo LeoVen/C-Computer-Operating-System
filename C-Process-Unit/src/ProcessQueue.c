@@ -120,6 +120,16 @@ int pcb_display(ProcessQueue *pcq)
 	return 0;
 }
 
+int pcb_display_single(ProcessControlBlock *pcb)
+{
+	if (pcb == NULL)
+		return 1;
+
+	printf("\n %zu \t %s \t %6zu \t %s \t %s", pcb->p_id, pcb->p_name, pcb->clocks, proc_status_str(pcb->status), pcb->time);
+	
+	return 0;
+}
+
 char * proc_status_str(ProcessStatus st)
 {
 	switch (st)
@@ -135,4 +145,9 @@ char * proc_status_str(ProcessStatus st)
 		default:
 			return "UNKNOWN";
 	}
+}
+
+bool queue_is_empty(ProcessQueue *pcq)
+{
+	return (pcq->length == 0);
 }
