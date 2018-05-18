@@ -213,6 +213,9 @@ int proc_remove(Computer *computer)
 	{
 		computer->proc_queue->front = computer->proc_queue->front->prev;
 
+		if (computer->proc_queue->front == NULL)
+			computer->proc_queue->rear = NULL;
+
 		free(block);
 	}
 	else
@@ -224,7 +227,10 @@ int proc_remove(Computer *computer)
 			scan = scan->prev;
 		}
 
-		scan->prev = block->prev;
+		scan->prev = scan->prev->prev;
+
+		computer->proc_queue->rear = scan;
+
 		free(block);
 	}
 
@@ -618,11 +624,12 @@ size_t get_clocks()
 
 char * get_name(void)
 {
-	char name[NAME_SIZE];
+	char name[NAME_SIZE], newline;
 
 	printf("\nProcess name: ");
 
 	fflush(stdin);
+	scanf("%c", &newline);
 	fgets(name, NAME_SIZE, stdin);
 
 	name[strlen(name) - 1] = '\0';
